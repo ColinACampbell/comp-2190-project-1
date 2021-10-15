@@ -7,6 +7,7 @@ SERVER_IP = "192.168.100.212"
 # Set up the Server's Address
 ADDR = (SERVER_IP, PORT)
 FORMAT = 'utf-8'
+RECV_BYTES = 1024
 
 # Add code to initialize the Socket.
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -22,7 +23,7 @@ def getConCode():
 
 # Write code to Prompts the Agent to enter an answer and returns the answer given.
 def getAnswer(question):
-    return "FOoo"
+    return input(question)
 
 # Get Connection Code.
 connCode = getConCode()
@@ -31,7 +32,7 @@ connCode = getConCode()
 send(connCode)
 
 # Recive question from server.
-question = """Your Code here"""
+question = client.recv(RECV_BYTES).decode(FORMAT)
 
 # Get Answer from Agent.
 answer = getAnswer(question)

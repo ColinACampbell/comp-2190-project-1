@@ -2,16 +2,23 @@ import socket
 import datetime as dt
 import threading
 import Verify as av
+import random
 
-
-
-questionsAndAns = {
+SECRET_QUESTIONS = {
     "I saw a purple Kangaroo yesterday, did you?": "Only after the sun went down",
     "What did Eve say when she ate the fruit?": "Nothing",
     "What do you call a fish wearing a bowtie?": "Sofishticated",
     "What did the ocean say to the beach?": "Nothing, it just waved",
     "Why did God save men but not fallen angels?": "Good Question",
 }
+
+
+AGENTS = {
+    "2975" : "Agent A",
+    "6144" : "Agent B"
+}
+
+PREDEFINED_CHARS = ["AJK78", "KTV90", "NEL55", "DFG28"]
 
 # Select an appropriate port number.
 PORT = 5000
@@ -20,6 +27,7 @@ SERVER_IP = "192.168.100.212"
 # Set up the Server's Address
 ADDR = (SERVER_IP, PORT)
 FORMAT = 'utf-8'
+RECV_BYTES = 1024
 
 # Add code to initialize the socket
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,26 +35,35 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 
 # This function processes messages that are read through the Socket.
-
-
 def clientHandler(conn, addr):
 
     # Write Code that allows the Server to receive a connection code from an Agent.
-    """Your Code here"""
-    connectionCode = conn.recv(1024).decode(FORMAT)
-    print("Message is "+connectionCode)
+    connectionCode = conn.recv(RECV_BYTES).decode(FORMAT)
 
     # Write Code that allows the Server to check if the connection code received is valid.
-    """Your Code here"""
+    if (len(connectionCode) < 9) : ## check if the correct number of characters was entered before proceeding
+        print("Wrong Code Entered")
+        return    
+    
+    predefChar = connectionCode[:5]
+    agentCode = connectionCode[5:9] # I used to to 9 becuase if I don't set boundry, any data from the buffer/memory from previos trans, would be included
 
+    if (not ( (agentCode in AGENTS) and (predefChar in PREDEFINED_CHARS))) :
+        print("We have an imposter")
+        return
+    
+    agent = AGENTS[agentCode]
+    
     # Write Code that allows the Server to retrieve a random secret question.
-    """Your Code here"""
+    questions = list(SECRET_QUESTIONS.keys())
+    selectedQuestion = questions[random.randint(0,len(questions))] ## Incase the agency adds more questions
+
 
     # Write Code that allows the Server to send the random secret question to the Client.
-    """Your Code here"""
+    conn.send(selectedQuestion.encode())
 
     # Write Code that allows the Server to receive an answer from the Client.
-    """Your Code here"""
+    answer = conn.recv(RECV_BYTES)
 
     # Write Code that allows the Server to check if the answer received is correct.
     """Your Code here"""
