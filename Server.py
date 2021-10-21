@@ -5,11 +5,11 @@ import Verify as av
 import random
 
 SECRET_QUESTIONS = {
-    "I saw a purple Kangaroo yesterday, did you?": "Only after the sun went down",
-    "What did Eve say when she ate the fruit?": "Nothing",
-    "What do you call a fish wearing a bowtie?": "Sofishticated",
-    "What did the ocean say to the beach?": "Nothing, it just waved",
-    "Why did God save men but not fallen angels?": "Good Question",
+    "I saw a purple Kangaroo yesterday, did you? ": "Only after the sun went down",
+    "What did Eve say when she ate the fruit? ": "Nothing",
+    "What do you call a fish wearing a bowtie? ": "Sofishticated",
+    "What did the ocean say to the beach? ": "Nothing, it just waved",
+    "Why did God save men but not fallen angels? ": "Good Question",
 }
 
 
@@ -56,20 +56,29 @@ def clientHandler(conn, addr):
     
     # Write Code that allows the Server to retrieve a random secret question.
     questions = list(SECRET_QUESTIONS.keys())
-    selectedQuestion = questions[random.randint(0,len(questions))] ## Incase the agency adds more questions
+    randomNum = random.randint(1,len(questions) - 1)
+
+    print("Random = "+ str(randomNum) + " Zero is " + questions[0])
+    selectedQuestion = questions[randomNum] ## Incase the agency adds more questions
 
 
     # Write Code that allows the Server to send the random secret question to the Client.
     conn.send(selectedQuestion.encode())
 
     # Write Code that allows the Server to receive an answer from the Client.
-    answer = conn.recv(RECV_BYTES)
+    answer = conn.recv(RECV_BYTES).decode(FORMAT)
 
-    # Write Code that allows the Server to check if the answer received is correct.
-    """Your Code here"""
+    # Code that allows the Server to check if the answer received is correct.
+    # A Code that allows the Server to Send Welcome message to agent -> "Welcome Agent X"
 
-    # Write Code that allows the Server to Send Welcome message to agent -> "Welcome Agent X"
+    print(SECRET_QUESTIONS[selectedQuestion]+ " Ans "+answer)
+
     """Your Code here"""
+    if answer == SECRET_QUESTIONS[selectedQuestion] :
+        welcomeMsg = "Welcome " + agent + " Time Logged - "+str(dt.datetime.now())
+        conn.send(welcomeMsg.encode())
+    else :
+        conn.send("You are not welcomed".encode())
 
 
 def runServer():

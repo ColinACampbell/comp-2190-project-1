@@ -41,4 +41,5 @@ answer = getAnswer(question)
 send(answer)
 
 # Recive and print response from the server.
-"""Your Code here"""
+resp = client.recv(RECV_BYTES).decode(FORMAT)
+print(resp)
