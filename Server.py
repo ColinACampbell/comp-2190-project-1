@@ -37,12 +37,19 @@ server.bind(ADDR)
 # This function processes messages that are read through the Socket.
 def clientHandler(conn, addr):
 
+    file = open("Server Log File.txt",'a')
+
+    file.write("Open new connection\n")
+
     # Write Code that allows the Server to receive a connection code from an Agent.
     connectionCode = conn.recv(RECV_BYTES).decode(FORMAT)
+
+    file.write("Recieved connection code: " + connectionCode+"\n")
 
     # Write Code that allows the Server to check if the connection code received is valid.
     if (len(connectionCode) < 9) : ## check if the correct number of characters was entered before proceeding
         print("Wrong Code Entered")
+        file.write("Wrong Code Entered: wrong length detected\n")
         return    
     
     predefChar = connectionCode[:5]
@@ -50,9 +57,11 @@ def clientHandler(conn, addr):
 
     if (not ( (agentCode in AGENTS) and (predefChar in PREDEFINED_CHARS))) :
         print("We have an imposter")
+        file.write("Agent code invalid\n")
         return
     
     agent = AGENTS[agentCode]
+    file.write("Agent detected, agent " +agent +"\n")
     
     # Write Code that allows the Server to retrieve a random secret question.
     questions = list(SECRET_QUESTIONS.keys())
@@ -61,25 +70,32 @@ def clientHandler(conn, addr):
     print("Random = "+ str(randomNum) + " Zero is " + questions[0])
     selectedQuestion = questions[randomNum] ## Incase the agency adds more questions
 
+    file.write("Chose question " + selectedQuestion + "\n")
+
 
     # Write Code that allows the Server to send the random secret question to the Client.
     conn.send(selectedQuestion.encode())
+    file.write("Asked question... awaiting reply")
 
     # Write Code that allows the Server to receive an answer from the Client.
     answer = conn.recv(RECV_BYTES).decode(FORMAT)
+    file.write("Answer is "+ answer+"\n")
 
     # Code that allows the Server to check if the answer received is correct.
     # A Code that allows the Server to Send Welcome message to agent -> "Welcome Agent X"
 
     print(SECRET_QUESTIONS[selectedQuestion]+ " Ans "+answer)
 
-    """Your Code here"""
     if answer == SECRET_QUESTIONS[selectedQuestion] :
+        print("Question was answered correctly: " +answer+"\n")
         welcomeMsg = "Welcome " + agent + " Time Logged - "+str(dt.datetime.now())
+        file.write("Welcome message: "+welcomeMsg+"\n")
         conn.send(welcomeMsg.encode())
     else :
         conn.send("You are not welcomed".encode())
+        file.write("Our 'Secret Agent' got the question incorrect "+answer+"\n")
 
+    file.close()
 
 def runServer():
     server.listen()
