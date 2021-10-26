@@ -9,12 +9,18 @@ ADDR = (SERVER_IP, PORT)
 FORMAT = 'utf-8'
 RECV_BYTES = 1024
 
+file = open("Agent Chat Log.txt","a")
+file.write("----Chat initiated----\n")
+
 # Add code to initialize the Socket.
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
 
+file.write("----Connected to server----")
+
 # Write Code that will allow the Client (Agent) to send messages to the server. The Function accepts the message as a String (msg) and sends that message to the Server through a connection established.
 def send(msg):
+    file.write("Sent: "+msg+"\n")
     client.send(msg.encode())
 
 # Write code to Prompts the Agent to enter their connection code and returns the code given.
@@ -33,6 +39,7 @@ send(connCode)
 
 # Recive question from server.
 question = client.recv(RECV_BYTES).decode(FORMAT)
+file.write("Recieved question: "+question+"\n")
 
 # Get Answer from Agent.
 answer = getAnswer(question)

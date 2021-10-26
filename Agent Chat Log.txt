@@ -1,0 +1,12 @@
+----Chat initiated----
+----Connected to server----Sent: KTV902975
+Recieved question: What did the ocean say to the beach? 
+Sent: Nothing, it just waved
+----Chat initiated----
+----Connected to server----Sent: KTV902975
+Recieved question: Why did God save men but not fallen angels? 
+Sent: Good Question
+----Chat initiated----
+----Connected to server----Sent: KTV906144
+Recieved question: What did the ocean say to the beach? 
+Sent: Nothing, it just waved

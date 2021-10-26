@@ -48,7 +48,7 @@ def clientHandler(conn, addr):
 
     # Write Code that allows the Server to check if the connection code received is valid.
     if (len(connectionCode) < 9) : ## check if the correct number of characters was entered before proceeding
-        print("Wrong Code Entered")
+        print("Wrong Code Entered\n")
         file.write("Wrong Code Entered: wrong length detected\n")
         return    
     
@@ -75,7 +75,7 @@ def clientHandler(conn, addr):
 
     # Write Code that allows the Server to send the random secret question to the Client.
     conn.send(selectedQuestion.encode())
-    file.write("Asked question... awaiting reply")
+    file.write("Asked question... awaiting reply\n")
 
     # Write Code that allows the Server to receive an answer from the Client.
     answer = conn.recv(RECV_BYTES).decode(FORMAT)
