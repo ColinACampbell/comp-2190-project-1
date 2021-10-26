@@ -10,3 +10,33 @@ Sent: Good Question
 ----Connected to server----Sent: KTV906144
 Recieved question: What did the ocean say to the beach? 
 Sent: Nothing, it just waved
+----Chat initiated----
+----Chat initiated----
+----Chat initiated----
+----Connected to server----Sent: AJK786144
+Recieved question: Why did God save men but not fallen angels? 
+Sent: Good Question
+----Chat initiated----
+----Connected to server----Sent: AJK786144
+Recieved question: What did Eve say when she ate the fruit? 
+----Chat initiated----
+----Connected to server----Sent: AJK786144
+Recieved question: 
+----Chat initiated----
+----Chat initiated----
+----Chat initiated----
+----Chat initiated----
+----Chat initiated----
+----Chat initiated----
+----Connected to server----Sent: AJK786144
+Recieved question: Wrong connection code
+----Chat initiated----
+----Connected to server----Sent: AJK786144
+Recieved question: Wrong connection code
+----Chat initiated----
+----Connected to server----Sent: AJK786144
+Recieved question: Wrong connection code
+----Chat initiated----
+----Connected to server----Sent: AJK786144
+Recieved question: What did the ocean say to the beach? 
+Sent: Nothing, it just waved

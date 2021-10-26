@@ -55,12 +55,14 @@ def clientHandler(conn, addr):
     predefChar = connectionCode[:5]
     agentCode = connectionCode[5:9] # I used to to 9 becuase if I don't set boundry, any data from the buffer/memory from previos trans, would be included
 
-    if (not ( (agentCode in AGENTS) and (predefChar in PREDEFINED_CHARS))) :
-        print("We have an imposter")
-        file.write("Agent code invalid\n")
+    agent = ""
+    if (av.check_conn_codes(connectionCode) != -1) :
+        agent = av.check_conn_codes(connectionCode);
+    else:
+        print("Wrong Connection Code")
+        conn.send("Wrong connection code".encode())
         return
     
-    agent = AGENTS[agentCode]
     file.write("Agent detected, agent " +agent +"\n")
     
     # Write Code that allows the Server to retrieve a random secret question.

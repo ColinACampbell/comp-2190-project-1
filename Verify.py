@@ -1,6 +1,6 @@
 import random
 
-from Agent import RECV_BYTES
+#from Agent import RECV_BYTES
 
 #from Server import AGENTS
 
@@ -14,8 +14,8 @@ AgentB = "6144"
 
 # Write code that will Generate all possible connection codes for the Agents and store them in their respective arrays. 
 for pre in predefined:
-    agentACode = AgentA + pre
-    agentBCode = AgentB + pre
+    agentACode = pre+AgentA
+    agentBCode = pre+AgentB
     AgentA_codes.append(agentACode)
     AgentB_codes.append(agentBCode)
 
@@ -34,6 +34,10 @@ def getSecretQuestion():
 
 #This function must check the connection code given by the client (Agent) and return the name of the Agent (Agent A or B). If the code is invalid the function should return -1.
 def check_conn_codes(connCode):
+    print(AgentA_codes)
+    print(AgentB_codes)
+    print(connCode in AgentA_codes)
+    print(connCode in AgentB_codes)
     if (connCode in AgentA_codes) :
         return "Agent A"
     elif (connCode in AgentB_codes) :

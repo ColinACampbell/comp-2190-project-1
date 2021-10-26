@@ -19,3 +19,32 @@ Chose question What did the ocean say to the beach?
 Asked question... awaiting reply
 Answer is Nothing, it just waved
 Welcome message: Welcome Agent B Time Logged - 2021-10-24 22:40:57.981123
+Open new connection
+Recieved connection code: AJK786144
+Agent detected, agent 
+Chose question Why did God save men but not fallen angels? 
+Asked question... awaiting reply
+Answer is Good Question
+Welcome message: Welcome  Time Logged - 2021-10-25 19:54:39.706344
+Open new connection
+Recieved connection code: AJK786144
+Agent detected, agent 
+Chose question What did Eve say when she ate the fruit? 
+Asked question... awaiting reply
+Answer is 
+Our 'Secret Agent' got the question incorrect 
+Open new connection
+Recieved connection code: AJK786144
+Open new connection
+Recieved connection code: AJK786144
+Open new connection
+Recieved connection code: AJK786144
+Open new connection
+Recieved connection code: AJK786144
+Open new connection
+Recieved connection code: AJK786144
+Agent detected, agent Agent B
+Chose question What did the ocean say to the beach? 
+Asked question... awaiting reply
+Answer is Nothing, it just waved
+Welcome message: Welcome Agent B Time Logged - 2021-10-25 20:00:51.825256
