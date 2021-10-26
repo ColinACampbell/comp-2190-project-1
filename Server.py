@@ -60,23 +60,20 @@ def clientHandler(conn, addr):
         agent = av.check_conn_codes(connectionCode);
     else:
         print("Wrong Connection Code")
+        file.write("Wrong code entered\n")
         conn.send("Wrong connection code".encode())
         return
     
     file.write("Agent detected, agent " +agent +"\n")
     
-    # Write Code that allows the Server to retrieve a random secret question.
-    questions = list(SECRET_QUESTIONS.keys())
-    randomNum = random.randint(1,len(questions) - 1)
+    question, correctAns = av.getSecretQuestion()
 
-    print("Random = "+ str(randomNum) + " Zero is " + questions[0])
-    selectedQuestion = questions[randomNum] ## Incase the agency adds more questions
+    print("Selected question is "+question)
 
-    file.write("Chose question " + selectedQuestion + "\n")
-
+    file.write("Selected question is " + question + "\n")
 
     # Write Code that allows the Server to send the random secret question to the Client.
-    conn.send(selectedQuestion.encode())
+    conn.send(question.encode())
     file.write("Asked question... awaiting reply\n")
 
     # Write Code that allows the Server to receive an answer from the Client.
@@ -86,9 +83,9 @@ def clientHandler(conn, addr):
     # Code that allows the Server to check if the answer received is correct.
     # A Code that allows the Server to Send Welcome message to agent -> "Welcome Agent X"
 
-    print(SECRET_QUESTIONS[selectedQuestion]+ " Ans "+answer)
+    print(question+ " Ans "+answer)
 
-    if answer == SECRET_QUESTIONS[selectedQuestion] :
+    if answer == correctAns :
         print("Question was answered correctly: " +answer+"\n")
         welcomeMsg = "Welcome " + agent + " Time Logged - "+str(dt.datetime.now())
         file.write("Welcome message: "+welcomeMsg+"\n")

@@ -48,3 +48,17 @@ Chose question What did the ocean say to the beach?
 Asked question... awaiting reply
 Answer is Nothing, it just waved
 Welcome message: Welcome Agent B Time Logged - 2021-10-25 20:00:51.825256
+Open new connection
+Recieved connection code: AJK786144
+Agent detected, agent Agent B
+Selected question is What do you call a fish wearing a bowtie?
+Asked question... awaiting reply
+Answer is Sophisticated
+Our 'Secret Agent' got the question incorrect Sophisticated
+Open new connection
+Recieved connection code: AJK786144
+Agent detected, agent Agent B
+Selected question is Why did God save men but not fallen angels?
+Asked question... awaiting reply
+Answer is Good Question
+Welcome message: Welcome Agent B Time Logged - 2021-10-25 20:10:43.236830
