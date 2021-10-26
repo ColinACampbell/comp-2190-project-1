@@ -37,7 +37,7 @@ def check_conn_codes(connCode):
     print(AgentB_codes)
     print(connCode in AgentA_codes)
     print(connCode in AgentB_codes)
-    if (connCode in AgentA_codes) :
+    if (connCode in AgentA_codes) : # Check if code is in either agent a or agent b
         return "Agent A"
     elif (connCode in AgentB_codes) :
         return "Agent B"
